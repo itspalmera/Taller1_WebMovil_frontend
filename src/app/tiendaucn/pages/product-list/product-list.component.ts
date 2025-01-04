@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { LogoComponent } from '../../components/logo/logo.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [],
+  imports: [NavbarComponent, LogoComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
