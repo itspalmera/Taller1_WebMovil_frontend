@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ButtonTemplateComponent } from "../button-template/button-template.component";
 
 @Component({
   selector: 'register-form',
-  imports: [],
+  imports: [ButtonTemplateComponent],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css'
 })

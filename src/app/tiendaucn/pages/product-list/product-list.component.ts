@@ -4,7 +4,7 @@ import { LogoComponent } from '../../components/logo/logo.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [NavbarComponent, LogoComponent],
+  imports: [NavbarComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })

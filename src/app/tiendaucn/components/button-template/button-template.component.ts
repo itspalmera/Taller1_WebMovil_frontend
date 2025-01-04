@@ -3,12 +3,13 @@ import { Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'navbar-button',
+  selector: 'button-template',
   imports: [],
-  templateUrl: './navbar-button.component.html',
-  styleUrl: './navbar-button.component.css',
+  templateUrl: './button-template.component.html',
+  styleUrl: './button-template.component.css'
 })
-export class NavbarButtonComponent {
+export class ButtonTemplateComponent {
+
   @Input() label: string = '';
   @Input() route: string = '';
 
