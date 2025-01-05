@@ -17,6 +17,8 @@ export class ProductsAdminService {
   public errors: string[] = [];
   public page: number = 1;
 
+
+
   async getProducts(page: number) {
     try {
       const response= await firstValueFrom(
@@ -37,10 +39,9 @@ export class ProductsAdminService {
       );
       return response;
     } catch (error) {
-      console.log(error);
       let e = error as HttpErrorResponse;
-      this.errors.push(e.message);
-      return Promise.reject(error);
+      this.errors.push(e.statusText);
+      return Promise.reject(e.status);
     }
   }
   async getCategory(){
@@ -57,6 +58,19 @@ export class ProductsAdminService {
   async updateProduct(product: Product, id: string) {
     try {
       const response = await firstValueFrom(this.http.put<Product>(`${this.baseUrl}Product/${id}`, product));
+      return response;
+    } catch (error) {
+      console.log(error);
+      let e = error as HttpErrorResponse;
+      this.errors.push(e.message);
+      return Promise.reject(error);
+    }
+  }
+
+  
+  async deleteProduct(id: string) {
+    try {
+      const response = await firstValueFrom(this.http.delete<Product>(`${this.baseUrl}Product/${id}`));
       return response;
     } catch (error) {
       console.log(error);

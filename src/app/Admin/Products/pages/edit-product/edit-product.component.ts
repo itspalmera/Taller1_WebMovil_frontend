@@ -43,10 +43,8 @@ export class EditProductComponent implements OnInit {
     });
   }
   getProduct(productId: string) {
-    this.productsAdminService.getProduct(productId)
-      .then(response => {
-
-      // Verifica si la respuesta es un arreglo y tiene al menos un producto
+    var response = this.productsAdminService.getProduct(productId)
+      response.then(response => {
       if (response) {
         const product = response; // Accedemos al primer producto
         // Usamos patchValue para actualizar los valores del formulario
@@ -59,6 +57,7 @@ export class EditProductComponent implements OnInit {
         });
       }
       }).catch(error => {
+        this.router.navigate(['/products-admin']);  // Redirige si hay un error
         console.error('Error al obtener el producto:',error);
       });
   }

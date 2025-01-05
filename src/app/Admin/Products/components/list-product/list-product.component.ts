@@ -15,6 +15,8 @@ import { ResponseAPIGetProduct } from '../../Interfaces/ResponseAPI_GetAllProduc
 export class ListProductComponent {
   private productService: ProductsAdminService = inject(ProductsAdminService);
   public products: ResponseAPIGetProduct[] = [];
+  showDeleteModal = false;
+  productToDelete: string | null = null;
 
   @Output() onPageChange = new EventEmitter<number>();
   @Input() currentPage: number = 1;
@@ -44,5 +46,27 @@ export class ListProductComponent {
       this.getProducts();
       this.onPageChange.emit(this.currentPage);
     }
+  }
+  deleteProduct() {
+    if (this.productToDelete) {
+      this.productService.deleteProduct(this.productToDelete).then(() => {
+        // Elimina el producto de la lista localmente
+        this.products = this.products.filter(product => product.id !== this.productToDelete);
+        this.closeDeleteModal(); // Cierra el modal después de la eliminación
+      }).catch((error) => {
+        console.error('Error al eliminar el producto', error);
+      });
+    }
+    window.location.reload();
+  }
+  // Abre el modal y guarda el producto a eliminar
+  openDeleteConfirmation(productId: string) {
+    this.productToDelete = productId;
+    this.showDeleteModal = true;
+  }
+  // Cierra el modal
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.productToDelete = null;
   }
 }
