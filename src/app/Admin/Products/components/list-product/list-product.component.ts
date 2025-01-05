@@ -3,7 +3,6 @@ import { ProductsAdminService } from '../../services/products-admin.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ResponseAPIGetProduct } from '../../Interfaces/ResponseAPI_GetAllProduct';
-import { AppComponent } from '../../../../app.component';
 
 @Component({
   selector: 'app-list-product',

@@ -1,4 +1,5 @@
 export interface ResponseAPIGetProduct {
+    id:      string;
     name:    string;
     price:   string;
     stock:   string;
