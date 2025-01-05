@@ -1,1 +1,44 @@
-<p>dropdown-button works!</p>
+<li>
+  <button (click)="toggleDropdown()" class="dropdown-button">
+    {{ label }}
+    <svg class="dropdown-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+    </svg>
+  </button>
+  <!-- Dropdown menu -->
+  <div [class.show]="isDropdownOpen" class="dropdown-menu">
+    <ul class="dropdown-menu-list">
+      <li>
+        <button (click)="toggleInnerDropdown()" class="dropdown-button">
+          Ordenar
+          <svg class="dropdown-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+        <div [class.show]="isInnerDropdownOpen" class="dropdown-menu">
+          <ul class="dropdown-menu-list">
+            <li><a href="#" class="dropdown-menu-item">Ascendente</a></li>
+            <li><a href="#" class="dropdown-menu-item">Descendente</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <button (click)="toggleDoubleDropdown()" class="dropdown-button">
+          Tipo
+          <svg class="dropdown-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+        <div [class.show]="isDoubleDropdownOpen" class="dropdown-menu">
+          <ul class="dropdown-menu-list">
+            <li><a href="#" class="dropdown-menu-item">Poleras</a></li>
+            <li><a href="#" class="dropdown-menu-item">Gorros</a></li>
+            <li><a href="#" class="dropdown-menu-item">Juguetería</a></li>
+            <li><a href="#" class="dropdown-menu-item">Alimentación</a></li>
+            <li><a href="#" class="dropdown-menu-item">Libros</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</li>
