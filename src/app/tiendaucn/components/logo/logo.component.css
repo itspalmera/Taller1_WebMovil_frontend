@@ -1,0 +1,14 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+
+.logo-text {
+  color: #000000;
+  /* Texto blanco */
+  font-weight: bold;
+  /* Texto en negrita */
+  font-size: 32px;
+  /* Tamaño de fuente grande */
+}
