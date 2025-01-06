@@ -1,0 +1,12 @@
+<div class="search-bar-container">
+  <div class="search-bar">
+    <input type="text" #searchText placeholder="Search products..." />
+    <button (click)="searchCompleted.emit(searchText.value)" class="search-button">
+      <img src="assets/images/lupa.png" alt="Search" class="search-icon">
+    </button>
+  </div>
+  <!-- Help text -->
+  <span class="text-sm text-gray-700 dark:text-gray-400">
+    Página <span class="font-semibold text-gray-900 dark:text-white">{{ pageNumber }}</span> de <span class="font-semibold text-gray-900 dark:text-white">{{ totalPages }}</span> de <span class="font-semibold text-gray-900 dark:text-white">{{ totalItems }}</span> productos
+  </span>
+</div>

@@ -1,0 +1,130 @@
+.navbar {
+  background-color: #78B5FF;
+  position: relative;
+  width: 100%;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar .max-w-screen-xl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-menu-list li {
+  margin-left: 20px;
+  /* Añadir margen entre los botones */
+}
+
+.navbar-menu-item {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.navbar-menu-item:hover {
+  color: #808080;
+  /* Cambia el color a gris al pasar el cursor */
+}
+
+.search-container {
+  position: relative;
+  display: block;
+}
+
+.search-container .absolute {
+  position: absolute;
+}
+
+.search-container .inset-y-0 {
+  top: 0;
+  bottom: 0;
+}
+
+.search-container .start-0 {
+  left: 0;
+}
+
+.search-container .flex {
+  display: flex;
+  align-items: center;
+}
+
+.search-container .ps-3 {
+  padding-left: 0.75rem;
+}
+
+.search-container .pointer-events-none {
+  pointer-events: none;
+}
+
+.search-container .w-4 {
+  width: 1rem;
+}
+
+.search-container .h-4 {
+  height: 1rem;
+}
+
+.search-container .text-gray-500 {
+  color: #6b7280;
+}
+
+.search-container .dark\:text-gray-400 {
+  color: #9ca3af;
+}
+
+.search-input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+  font-size: 0.875rem;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.search-input.dark {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+.search-input.dark::placeholder {
+  color: #9ca3af;
+}
+
+.search-input.dark:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
