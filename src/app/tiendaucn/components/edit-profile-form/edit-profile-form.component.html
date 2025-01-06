@@ -1,15 +1,15 @@
-<form class="max-w-sm mx-auto">
+<form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()" class="max-w-sm mx-auto">
   <div class="mb-5">
     <label for="name" class="input-label">Nombre</label>
-    <input type="text" id="name" class="input-field" placeholder="Nombre" required />
+    <input type="text" id="name" formControlName="name" class="input-field" placeholder="Nombre" required />
   </div>
   <div class="mb-5">
     <label for="birthdate" class="input-label">Fecha de Nacimiento</label>
-    <input type="text" id="birthdate" class="input-field" placeholder="DD-MM-YYYY" required />
+    <input type="text" id="birthdate" formControlName="birthDate" class="input-field" placeholder="DD-MM-YYYY" required />
   </div>
   <div class="mb-5">
     <label for="gender" class="input-label">Género</label>
-    <select id="gender" class="input-field" required>
+    <select id="gender" formControlName="genderId" class="input-field" required>
       <option value="" disabled selected>Seleccione una opción</option>
       <option value="female">Mujer</option>
       <option value="male">Hombre</option>
@@ -17,7 +17,7 @@
       <option value="prefer-not-to-say">Prefiero no decirlo</option>
     </select>
   </div>
-  <button type="submit" class="submit-button">Guardar</button>
+  <button type="submit" class="submit-button" [disabled]="editProfileForm.invalid">Guardar</button>
   <div class="center-button">
     <button-template label="Cambiar contraseña" route="/change-password"></button-template>
   </div>

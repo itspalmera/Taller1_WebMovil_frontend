@@ -4,7 +4,7 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-register',
-  imports: [RegisterFormComponent, NavbarComponent],
+  imports: [RegisterFormComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

@@ -1,15 +1,9 @@
-<div class="card-product">
-  <a href="#">
-    <img class="card-product-image" src="/path/to/image.jpg" alt="Product Image" />
-  </a>
-  <div class="card-product-content">
-    <a href="#">
-      <h5 class="card-product-title">Nombre del Producto</h5>
-    </a>
-    <p class="card-product-type">Tipo del Producto</p>
-    <p class="card-product-price">$Precio</p>
-    <a href="#" class="card-product-button">
-      Agregar
-    </a>
+<div class="card">
+  <img [src]="product.image" alt="{{ product.name }}" class="card-img">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.category }}</p>
+    <p class="card-price">{{ product.price | currency }}</p>
+    <button class="btn btn-primary">Agregar al Carrito</button>
   </div>
 </div>
