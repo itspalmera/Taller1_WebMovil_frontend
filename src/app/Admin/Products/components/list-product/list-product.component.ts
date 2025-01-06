@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, SimpleChanges } from '@angular/core';
 import { ProductsAdminService } from '../../services/products-admin.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -18,34 +18,60 @@ export class ListProductComponent {
   showDeleteModal = false;
   productToDelete: string | null = null;
 
-  @Output() onPageChange = new EventEmitter<number>();
   @Input() currentPage: number = 1;
+  @Output() hasMoreProducts: boolean = true; // Notifica al padre si hay más productos disponibles
+
+  private page: number;
+
+  constructor() {
+    
+    this.page = 0;
+  }
   
   ngOnInit(): void {
     this.getProducts();
-    //console.log(this.currentPage);
+    if(this.products.length === 10){
+      this.hasMoreProducts = true;
+    }else{
+      this.hasMoreProducts= false;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['currentPage']) {
+      // Sincroniza la página interna con la página actual desde el padre.
+      this.page = this.currentPage;
+
+      // Verifica límites y casos especiales.
+      if (this.page < 1) {
+        this.page = 1;
+      }
+
+      // Lógica para manejar la cantidad de productos en la página actual.
+      if (this.products.length < 10 && this.page > 1) {
+        this.page = this.page;
+      }
+
+      console.log('Página actualizada: ', this.page);
+
+      // Obtiene los productos para la página actual.
+      this.getProducts();
+      if(this.products.length === 10){
+        this.hasMoreProducts = true;
+      }else{
+        this.hasMoreProducts= false;
+      }
+    }
   }
   getProducts() {
     this.productService
-      .getProducts(this.currentPage)
+      .getProducts(this.page)
       .then((products) => {
         this.products = products;
       })
       .catch((error) => {
         console.error('Error al obtener personajes:', error);
       });
-  }
-  nextPage() {
-    this.currentPage++;
-    this.getProducts();
-    this.onPageChange.emit(this.currentPage);
-  }
-  prevPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.getProducts();
-      this.onPageChange.emit(this.currentPage);
-    }
   }
   deleteProduct() {
     if (this.productToDelete) {

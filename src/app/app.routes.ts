@@ -6,7 +6,11 @@ export const routes: Routes = [
       loadComponent: () => import('./Admin/Products/pages/products-admin-home/products-admin-home.component').then(m => m.ProductsAdminHomeComponent)
     },
     {
-      path: 'products-admin/:id',
+      path: 'edit-product/:id',
       loadComponent: () => import('./Admin/Products/pages/edit-product/edit-product.component').then(m => m.EditProductComponent)  
+    },
+    {
+    path: 'create-product',
+    loadComponent: () => import('./Admin/Products/pages/create-product/create-product.component').then(m => m.CreateProductComponent)
     }
   ];

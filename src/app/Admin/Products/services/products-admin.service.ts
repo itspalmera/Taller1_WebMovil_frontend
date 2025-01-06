@@ -66,6 +66,17 @@ export class ProductsAdminService {
       return Promise.reject(error);
     }
   }
+  async createProduct(product: Product) {
+    try {
+      const response = await firstValueFrom(this.http.post<Product>(`${this.baseUrl}Product`, product));
+      return response;
+    } catch (error) {
+      console.log(error);
+      let e = error as HttpErrorResponse;
+      this.errors.push(e.message);
+      return Promise.reject(error);
+    }
+  }
 
   
   async deleteProduct(id: string) {
