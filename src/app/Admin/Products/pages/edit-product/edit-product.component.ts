@@ -6,10 +6,11 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Product } from '../../Interfaces/Product';
+import { NavbarComponent } from '../../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-edit-product',
-  imports: [CommonModule,HttpClientModule,FormsModule, ReactiveFormsModule],
+  imports: [NavbarComponent,CommonModule,HttpClientModule,FormsModule, ReactiveFormsModule],
   providers: [ProductsAdminService],
   standalone: true,
   templateUrl: './edit-product.component.html',

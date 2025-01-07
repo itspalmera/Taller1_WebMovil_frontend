@@ -10,7 +10,6 @@ import { Product } from '../../interfaces/GetAllProduct/Product';
   selector: 'card-list',
   imports: [
     CardProductComponent,
-    NavbarProductComponent,
     HttpClientModule,
     CommonModule,
   ],

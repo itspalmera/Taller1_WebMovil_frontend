@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CreateProductComponent } from '../create-product/create-product.component';
 import { FormCreateProductComponent } from '../../components/form-create-product/form-create-product.component';
+import { NavbarComponent } from '../../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-products-admin-home',
-  imports: [ListProductComponent, CommonModule, FormsModule],
+  imports: [NavbarComponent,ListProductComponent, CommonModule, FormsModule],
   providers: [ProductsAdminService],
   standalone: true,
   templateUrl: './products-admin-home.component.html',
