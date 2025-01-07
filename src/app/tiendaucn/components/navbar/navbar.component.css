@@ -1,0 +1,50 @@
+.navbar {
+  background-color: #78B5FF;
+  position: relative;
+  width: 100%;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar .max-w-screen-xl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-menu-list li {
+  margin-left: 20px;
+  /* Añadir margen entre los botones */
+}
+
+.navbar-menu-item {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.navbar-menu-item:hover {
+  color: #808080;
+  /* Cambia el color a gris al pasar el cursor */
+}

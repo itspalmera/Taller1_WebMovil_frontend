@@ -1,0 +1,9 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Alinear al inicio para que no esté centrado verticalmente */
+  height: 100vh;
+  padding-top: 100px;
+  /* Añadir padding superior para bajar el formulario */
+}
