@@ -12,5 +12,9 @@ export const routes: Routes = [
     {
     path: 'create-product',
     loadComponent: () => import('./Admin/Products/pages/create-product/create-product.component').then(m => m.CreateProductComponent)
+    },
+    {
+      path: 'clients-admin',
+      loadComponent: () => import('./Admin/Clients/pages/clients-admin-home/clients-admin-home.component').then(m => m.ClientsAdminHomeComponent)
     }
   ];
