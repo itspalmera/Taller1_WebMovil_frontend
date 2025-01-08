@@ -1,9 +1,9 @@
-<div class="card">
-  <img [src]="product.image" alt="{{ product.name }}" class="card-img">
-  <div class="card-body">
-    <h5 class="card-title">{{ product.name }}</h5>
-    <p class="card-text">{{ product.type }}</p>
-    <p class="card-price">{{ product.price | currency }}</p>
+<div class="flex flex-col items-center border border-gray-300 rounded-lg overflow-hidden shadow-sm m-2 hover:scale-105 transition-transform duration-300 w-full max-w-xs relative">
+  
+  <div class="card-body flex flex-col items-center text-center">
+    <h5 class="text-center"><strong>{{ product.name }}</strong></h5>
+    <h2 class="p-4 text-sm text-center">{{ product.type }}</h2>
+    <p class="card-price text-center">${{ product.price}}</p>
     <button class="btn btn-primary">Agregar al Carrito</button>
   </div>
 </div>
