@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
 
@@ -76,19 +77,32 @@ export const routes: Routes = [
   },
   {
     path: 'products-admin',
-    loadComponent: () => import('./Admin/Products/pages/products-admin-home/products-admin-home.component').then(m => m.ProductsAdminHomeComponent)
+    loadComponent: () => import('./Admin/Products/pages/products-admin-home/products-admin-home.component').then(m => m.ProductsAdminHomeComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }
   },
   {
     path: 'edit-product/:id',
-    loadComponent: () => import('./Admin/Products/pages/edit-product/edit-product.component').then(m => m.EditProductComponent)  
+    loadComponent: () => import('./Admin/Products/pages/edit-product/edit-product.component').then(m => m.EditProductComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }  
   },
   {
   path: 'create-product',
-  loadComponent: () => import('./Admin/Products/pages/create-product/create-product.component').then(m => m.CreateProductComponent)
+  loadComponent: () => import('./Admin/Products/pages/create-product/create-product.component').then(m => m.CreateProductComponent),
+  canActivate: [authGuard],
+  data: { role: 'Administrador' }
   },
   {
     path: 'clients-admin',
-    loadComponent: () => import('./Admin/Clients/pages/clients-admin-home/clients-admin-home.component').then(m => m.ClientsAdminHomeComponent)
+    loadComponent: () => import('./Admin/Clients/pages/clients-admin-home/clients-admin-home.component').then(m => m.ClientsAdminHomeComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }
+  },
+  {
+    path: '404',
+    loadComponent: () => import('./tiendaucn/pages/error404/error404.component').then(m => m.Error404Component)
+
   }
 ];
 

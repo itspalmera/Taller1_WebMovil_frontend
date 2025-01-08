@@ -3,6 +3,8 @@ import { ButtonTemplateComponent } from "../button-template/button-template.comp
 import { LogoComponent } from "../logo/logo.component";
 import { DropdownButtonComponent } from "../dropdown-button/dropdown-button.component";
 import { SearchBarComponent } from "../search-bar/search-bar.component";
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'navbar-product',
@@ -11,6 +13,7 @@ import { SearchBarComponent } from "../search-bar/search-bar.component";
     LogoComponent,
     DropdownButtonComponent,
     SearchBarComponent,
+    CommonModule
   ],
   templateUrl: './navbar-product.component.html',
   styleUrl: './navbar-product.component.css',
@@ -22,6 +25,12 @@ export class NavbarProductComponent {
   isDropdownOpen: boolean = false;
   isDoubleDropdownOpen: boolean = false;
   isInnerDropdownOpen: boolean = false; // Asegúrate de que esta propiedad esté definida
+  role: boolean  = false; // Asegúrate de que esta propiedad esté definida
+  
+  ngOnInit(): void {
+    this.role = this.authService.isAdmin();
+  }
+  constructor(private authService: AuthService) { }
 
 
   toggleDropdown() {

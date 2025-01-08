@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonTemplateComponent } from '../button-template/button-template.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from "../navbar/navbar.component";
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -31,7 +32,7 @@ export class RegisterFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) {
     // Definición del formulario reactivo
@@ -63,7 +64,7 @@ export class RegisterFormComponent {
       };
 
       try {
-        const success = await this.userService.register(userData);
+        const success = await this.authService.register(userData);
         if (success) {
           this.successMessage = 'Registro exitoso. Redirigiendo...';
           setTimeout(() => this.router.navigate(['/login']), 2000);

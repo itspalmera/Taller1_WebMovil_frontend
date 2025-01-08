@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { Login } from '../../interfaces/Auth/Login';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'login-form',
@@ -21,7 +23,7 @@ export class LoginFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -32,12 +34,15 @@ export class LoginFormComponent {
 
   async onSubmit() {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-
       try {
-        const success = await this.userService.login(email, password);
+        const login: Login = {
+          email: this.loginForm.value.email,
+          password: this.loginForm.value.password,
+        };
+        const success = await this.authService.login(login);
+        console.log('Login success:', success);
         if (success) {
-          this.router.navigate(['/dashboard']); // Redirige al dashboard o página principal
+          this.router.navigate(['/product-list']); // Redirige al dashboard o página principal
         }
       } catch (error) {
         this.errorMessage =
@@ -49,4 +54,3 @@ export class LoginFormComponent {
     }
   }
 }
-

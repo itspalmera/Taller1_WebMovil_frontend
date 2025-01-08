@@ -18,7 +18,7 @@
           <button-template label="Cuenta" route="/login"></button-template>
         </li>
         <li>
-          <button-template label="Modo administrador" route="/products-admin"></button-template>
+          <button-template *ngIf="role" label="Modo administrador" route="/products-admin"></button-template>
         </li>
       </ul>
     </div>
