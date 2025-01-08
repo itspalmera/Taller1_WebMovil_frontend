@@ -51,11 +51,6 @@ private purchaseService: PurchaseAdminService = inject(PurchaseAdminService);
   closeModal(): void {
     this.isModalOpen = false; // Cierra el modal
   }
-
-
-
-
-
   getPurchaseSearch(): void {
     this.purchaseService.searchPurchase(this.page,this.searchQuery,this.sort).then((purchases) => {
       this.purchases = purchases;
@@ -90,4 +85,5 @@ private purchaseService: PurchaseAdminService = inject(PurchaseAdminService);
     this.getAllPurchases()
     }
   }
+  
 }

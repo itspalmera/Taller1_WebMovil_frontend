@@ -106,6 +106,12 @@ export const routes: Routes = [
     data: { role: 'Administrador' }
   },
   {
+    path: 'view-purchase',
+    loadComponent: () => import('./tiendaucn/pages/view-purchase/view-purchase.component').then(m => m.ViewPurchaseComponent),
+    //canActivate: [authGuard],
+    //data: { roles: ['Cliente', 'Administrador'] }
+  },
+  {
     path: '404',
     loadComponent: () => import('./tiendaucn/pages/error404/error404.component').then(m => m.Error404Component)
 

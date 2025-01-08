@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { Login } from '../../interfaces/Auth/Login';
 import { AuthService } from '../../services/auth.service';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'login-form',
@@ -24,6 +25,7 @@ export class LoginFormComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private shoppingCartService: ShoppingCartService, 
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -40,8 +42,8 @@ export class LoginFormComponent {
           password: this.loginForm.value.password,
         };
         const success = await this.authService.login(login);
-        console.log('Login success:', success);
         if (success) {
+          this.shoppingCartService.SyncCart();
           this.router.navigate(['/product-list']); // Redirige al dashboard o página principal
         }
       } catch (error) {

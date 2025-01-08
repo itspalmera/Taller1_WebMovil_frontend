@@ -1,4 +1,4 @@
-export interface ResponseAPIGetpPurchaseByID {
+export interface ResponseAPIGetPurchaseById {
     result:                  Result;
     id:                      number;
     exception:               null;

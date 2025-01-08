@@ -8,7 +8,7 @@ import { NavbarComponent } from '../../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-create-product',
-  imports: [NavbarComponent,FormCreateProductComponent,CommonModule,FormsModule, ReactiveFormsModule],
+  imports: [FormCreateProductComponent,CommonModule,FormsModule, ReactiveFormsModule],
   providers: [ProductsAdminService],
   standalone: true,
   templateUrl: './create-product.component.html',

@@ -36,9 +36,8 @@ export class NavbarProductComponent {
 
   logout() {
     this.authService.deleteCookie("auth_token");
-    console.log( "eliminada");
-    // Después de eliminar la cookie, se puede actualizar el estado
     this.isUser = false; // Asegúrate de que esta propiedad esté definida
+    window.location.reload();
   }
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

@@ -10,12 +10,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class DetailPurchaseComponent {
   @Input() isModalOpen: boolean = false; // Recibe el estado del modal desde el componente padre
+  @Input() isPDF: boolean = false; // Recibe el estado del PDF desde el componente padre
   @Input() modalData: any; // Recibe los datos de la compra desde el componente padre
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
-
+  
   // Método para cerrar el modal
   // Emitir el evento para cerrar el modal
   closeModal() {
     this.close.emit();
   }
+  createPDF() {
+
+  }
+
+
 }
