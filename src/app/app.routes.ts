@@ -100,6 +100,12 @@ export const routes: Routes = [
     data: { role: 'Administrador' }
   },
   {
+    path: 'purchases-admin',
+    loadComponent: () => import('./Admin/Purchase/pages/purchases-admin-home/purchases-admin-home.component').then(m => m.PurchasesAdminHomeComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }
+  },
+  {
     path: '404',
     loadComponent: () => import('./tiendaucn/pages/error404/error404.component').then(m => m.Error404Component)
 
