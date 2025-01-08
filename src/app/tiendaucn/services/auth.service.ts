@@ -57,12 +57,27 @@ export class AuthService {
     const decodedToken = this.decodeToken(token);
     return decodedToken.role === 'Administrador';
   }
+  isUser():boolean{
+    const token = this.getCookie("auth_token");
+    if (!token) {
+      return false;
+    }
+    return true;
+  }
 
   setCookie(name: string, value: string, days: number): void {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));  // Definir la expiración de la cookie
     const expires = "expires=" + date.toUTCString();
-    document.cookie = `${name}=${value}; ${expires}; path=/`;  // Guardar la cookie
+    
+    let cookieString = `${name}=${value}; ${expires}; path=/`;  // Guardar la cookie
+    
+    // Solo agregar Secure si estamos en un entorno HTTPS
+    if (window.location.protocol === 'https:') {
+      cookieString += '; Secure';
+    }
+    
+    document.cookie = cookieString;  // Establecer la cookie
   }
   // Recuperar el token desde la cookie
   getCookie(name: string): string | null {
@@ -77,7 +92,10 @@ export class AuthService {
   }
   // Eliminar la cookie
   deleteCookie(name: string): void {
-    document.cookie = name + '=; Max-Age=-99999999;';  // Eliminar la cookie
+    // Si la cookie tiene el flag "Secure", asegúrate de que la eliminación también lo considere.
+    const path = '/';
+    document.cookie = name + '=; Max-Age=-99999999; path=${path}; domain=' + window.location.hostname + '; Secure; SameSite=Strict;';
+    console.log(`Cookie ${name} eliminada`);
   }
   // Función para decodificar el token
   private decodeToken(token: string): any {

@@ -25,14 +25,21 @@ export class NavbarProductComponent {
   isDropdownOpen: boolean = false;
   isDoubleDropdownOpen: boolean = false;
   isInnerDropdownOpen: boolean = false; // Asegúrate de que esta propiedad esté definida
-  role: boolean  = false; // Asegúrate de que esta propiedad esté definida
+  isAdmin: boolean  = false; // Asegúrate de que esta propiedad esté definida
+  isUser: boolean = false;
   
   ngOnInit(): void {
-    this.role = this.authService.isAdmin();
+    this.isAdmin = this.authService.isAdmin();
+    this.isUser = this.authService.isUser();
   }
   constructor(private authService: AuthService) { }
 
-
+  logout() {
+    this.authService.deleteCookie("auth_token");
+    console.log( "eliminada");
+    // Después de eliminar la cookie, se puede actualizar el estado
+    this.isUser = false; // Asegúrate de que esta propiedad esté definida
+  }
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
