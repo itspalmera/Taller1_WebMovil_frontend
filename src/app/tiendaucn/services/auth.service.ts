@@ -31,17 +31,17 @@ export class AuthService {
   }
 
   //Metodo para registrar usuario
-  async register(userData: user): Promise<boolean> {
+  async register(userData: user): Promise<string> {
     try {
       // Envía todos los campos requeridos por el backend
       const response = await firstValueFrom(
-        this.http.post<boolean>(`${this.baseUrl}/Register`, userData)
+        this.http.post<string>(`${this.baseUrl}/register`, userData)
       );
       return response; // Retorna directamente la respuesta
     } catch (error) {
       // Maneja el error de forma robusta
       if (error instanceof HttpErrorResponse) {
-        console.error('Error en el registro:', error.message);
+        console.error('Error en el registro:', error.error.message);
         throw new Error(`Error en el registro: ${error.message}`);
       }
       console.error('Error desconocido:', error);
