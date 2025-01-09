@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-list',
-  imports: [CardProductComponent, CardListComponent, CommonModule, HttpClientModule, NavbarProductComponent],
+  imports: [CardListComponent, CommonModule, HttpClientModule, NavbarProductComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })

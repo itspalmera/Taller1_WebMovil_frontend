@@ -14,8 +14,9 @@ export class ProductService {
 
   private http = inject(HttpClient);
   public errors: string[] = [];
+  public page: number = 1;
 
-  async getAllProducts(
+  async getAllProducts(page:number,
     text?: string,
     category?: string,
     sort?: string
@@ -33,7 +34,7 @@ export class ProductService {
       }
 
       const response = await firstValueFrom(
-        this.http.get<Product[]>(`${this.baseUrl}/Product`, { params })
+        this.http.get<Product[]>(`${this.baseUrl}/Product/GetAllProduct/${page}`, { params })
       );
       return Promise.resolve(response);
     } catch (error) {

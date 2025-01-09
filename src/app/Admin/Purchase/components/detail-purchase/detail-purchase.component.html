@@ -1,0 +1,27 @@
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" (click)="closeModal()">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-4/5 md:w-1/2" (click)="$event.stopPropagation()">
+    <!-- Contenedor del título y botón para cerrar -->
+    <div class="flex justify-center items-center mb-4">
+      <h2 class="text-xl font-bold text-center flex-grow">Detalle de Compra</h2>
+      <button (click)="closeModal()" class="text-red-500 hover:text-red-700">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <!-- Información del modal -->
+    <p><strong>Fecha de Compra:</strong> {{ modalData?.purchaseDate }}</p>
+    <p><strong>Total:</strong> ${{ modalData?.totalPurchasePrice }}</p>
+
+    <h3 class="mt-4 font-semibold">Productos:</h3>
+    <ul>
+      <li *ngFor="let product of modalData?.productDetails" class="border-b py-2">
+        <p><strong>Producto:</strong> {{ product.nameProduct }}</p>
+        <p><strong>Categoría:</strong> {{ product.type }}</p>
+        <p><strong>Precio:</strong> ${{ product.price }}</p>
+        <p><strong>Cantidad:</strong> {{ product.quantity }}</p>
+        <p><strong>Total:</strong> ${{ product.totalPrice }}</p>
+      </li>
+    </ul>
+  </div>
+</div>

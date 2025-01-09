@@ -1,34 +1,99 @@
 <navbar-basic></navbar-basic> <!-- Mantengo el componente de navegación -->
+<div class="container mx-auto p-3">
+      <form [formGroup]="forms" (ngSubmit)="onSubmit()" class="max-w-md mx-auto p-6 rounded-lg shadow-lg bg-white">
+      <div class="mb-5">
+        <label for="rut" class="input-label">Rut</label>
+        <input type="text" id="rut" formControlName="rut" class="input-field" placeholder="Rut" required />
+        <small *ngIf="rutRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+               El campo Rut es obligatorio.
+        </small>
+      </div>
+      <div class="mb-5">
+        <label for="name" class="input-label">Nombre</label>
+        <input type="text" id="name" formControlName="name" class="input-field" placeholder="Nombre" required />
+        <small *ngIf="nameRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+               El campo Nombre es obligatorio.
+        </small>
+        <small *ngIf="nameShort"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                El nombre tiene que tener al menos 8 caracteres.
+        </small>
+        <small *ngIf="nameLong"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                El nombre tiene que tener máximo 255 caracteres.
+        </small>
+        <small *ngIf="nameFormatInvalid"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                El nombre solo puede contener caracteres del abecedario español.
+        </small>
+      </div>
+      <div class="mb-5">
+        <label for="email" class="input-label">Correo Electrónico</label>
+        <input type="email" id="email" formControlName="email" class="input-field" placeholder="nombre@gmail.com"
+          required />
+          <small *ngIf="emailRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+               El campo Email es obligatorio.
+        </small>
+        <small *ngIf="emailFormatInvalid"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                El email ingresado no tiene un formato válido.
+        </small>
+      </div>
+      <div class="mb-5">
+        <label for="birthdate" class="input-label">Fecha de Nacimiento</label>
+        <input type="date" id="birthdate" formControlName="birthDate" class="input-field" placeholder="DD/MM/YYYY"
+          required />
+          <small *ngIf="birthDateRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+               El campo Fecha de Nacimiento es obligatorio.
+        </small>
+      </div>
+      <div class="mb-5">
 
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="max-w-sm mx-auto">
-  <div class="mb-5">
-    <label for="name" class="input-label">Nombre</label>
-    <input type="text" id="name" formControlName="name" class="input-field" placeholder="Nombre" required />
-  </div>
-  <div class="mb-5">
-    <label for="email" class="input-label">Correo Electrónico</label>
-    <input type="email" id="email" formControlName="email" class="input-field" placeholder="nombre@gmail.com" required />
-  </div>
-  <div class="mb-5">
-    <label for="birthdate" class="input-label">Fecha de Nacimiento</label>
-    <input type="text" id="birthdate" formControlName="birthDate" class="input-field" placeholder="DD-MM-YYYY" required />
-  </div>
-  <div class="mb-5">
-    <label for="password" class="input-label">Contraseña</label>
-    <input type="password" id="password" formControlName="password" class="input-field" required />
-  </div>
-  <div class="mb-5">
-    <label for="gender" class="input-label">Género</label>
-    <select id="gender" formControlName="genderId" class="input-field" required>
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="female">Mujer</option>
-      <option value="male">Hombre</option>
-      <option value="other">Otro</option>
-      <option value="prefer-not-to-say">Prefiero no decirlo</option>
-    </select>
-  </div>
-  <button type="submit" class="submit-button" [disabled]="registerForm.invalid">Registrar</button>
-  <div class="center-button">
-    <button-template label="Iniciar Sesión" route="/login"></button-template>
-  </div>
-</form>
+        <label for="gender" class="input-label">Género</label>
+        <select id="gender" formControlName="genderId" class="input-field" required>
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="female">Mujer</option>
+          <option value="male">Hombre</option>
+          <option value="other">Otro</option>
+          <option value="prefer-not-to-say">Prefiero no decirlo</option>
+        </select>
+      </div>
+
+      <div class="mb-5">
+        <label for="password" class="input-label">Contraseña</label>
+        <input type="password" id="password" formControlName="password" class="input-field" required />
+        <small *ngIf="passwordRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+               La contraseña es obligatoria.
+        </small>
+        <small *ngIf="passwordShort"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                La contraseña debe tener al menos 8 caracteres.
+        </small>
+        <small *ngIf="passwordLong"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                La contraseña debe tener a lo más 20 caracteres.
+        </small>
+        <small *ngIf="passwordFormatInvalid"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                La contraseña debe ser alfanumérica.
+        </small>
+      </div>
+      <div class="mb-5">
+        <label for="confirmPassword" class="input-label">Confirmar Contraseña</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="input-field" required />
+        <small *ngIf="confirmPasswordRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+               El campo Confirmar Contraseña es obligatorio.
+        </small>
+      </div>
+      <button type="submit" class="submit-button">Registrar</button>
+      <div class="center-button">
+        <button-template label="Iniciar Sesión" route="/login"></button-template>
+      </div>
+    </form>
+</div>

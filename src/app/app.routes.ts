@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
 
@@ -74,4 +75,46 @@ export const routes: Routes = [
     pathMatch: 'full', // Me redirija a product-list con cualquier cosa
     redirectTo: 'product-list', // Redirigir a product-list
   },
+  {
+    path: 'products-admin',
+    loadComponent: () => import('./Admin/Products/pages/products-admin-home/products-admin-home.component').then(m => m.ProductsAdminHomeComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }
+  },
+  {
+    path: 'edit-product/:id',
+    loadComponent: () => import('./Admin/Products/pages/edit-product/edit-product.component').then(m => m.EditProductComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }  
+  },
+  {
+  path: 'create-product',
+  loadComponent: () => import('./Admin/Products/pages/create-product/create-product.component').then(m => m.CreateProductComponent),
+  canActivate: [authGuard],
+  data: { role: 'Administrador' }
+  },
+  {
+    path: 'clients-admin',
+    loadComponent: () => import('./Admin/Clients/pages/clients-admin-home/clients-admin-home.component').then(m => m.ClientsAdminHomeComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }
+  },
+  {
+    path: 'purchases-admin',
+    loadComponent: () => import('./Admin/Purchase/pages/purchases-admin-home/purchases-admin-home.component').then(m => m.PurchasesAdminHomeComponent),
+    canActivate: [authGuard],
+    data: { role: 'Administrador' }
+  },
+  {
+    path: 'view-purchase',
+    loadComponent: () => import('./tiendaucn/pages/view-purchase/view-purchase.component').then(m => m.ViewPurchaseComponent),
+    //canActivate: [authGuard],
+    //data: { roles: ['Cliente', 'Administrador'] }
+  },
+  {
+    path: '404',
+    loadComponent: () => import('./tiendaucn/pages/error404/error404.component').then(m => m.Error404Component)
+
+  }
 ];
+

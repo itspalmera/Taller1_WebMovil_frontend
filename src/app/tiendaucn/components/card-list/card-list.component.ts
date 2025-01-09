@@ -10,7 +10,6 @@ import { Product } from '../../interfaces/GetAllProduct/Product';
   selector: 'card-list',
   imports: [
     CardProductComponent,
-    NavbarProductComponent,
     HttpClientModule,
     CommonModule,
   ],
@@ -19,16 +18,17 @@ import { Product } from '../../interfaces/GetAllProduct/Product';
 })
 export class CardListComponent implements OnInit {
   products: Product[] = [];
+  public page: number = 1;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.getAllProducts();
+    this.getAllProducts(this.page);
   }
 
-  async getAllProducts(text?: string, category?: string, sort?: string) {
+  async getAllProducts(page:number,text?: string, category?: string, sort?: string) {
     try {
-      const response = await this.productService.getAllProducts(
+      const response = await this.productService.getAllProducts(this.page,
         text,
         category,
         sort

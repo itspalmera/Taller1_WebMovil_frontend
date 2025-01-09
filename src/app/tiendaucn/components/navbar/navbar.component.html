@@ -12,7 +12,15 @@
           <button-template label="Carrito" route="/shopping-cart"></button-template>
         </li>
         <li>
-          <button-template label="Iniciar Sesión" route="/login"></button-template>
+          <button-template *ngIf="!isUser"label="Iniciar Sesión" route="/login"></button-template>
+        </li>
+        <li>
+          <button *ngIf="isUser" (click)="logout()" class="block px-3 py-2 text-sm font-bold text-black bg-transparent border-0 rounded cursor-pointer transition-colors duration-200 hover:bg-gray-100 hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:px-0">
+            Cerrar Sesión
+        </button>
+        </li>
+        <li>
+          <button-template *ngIf="isAdmin" label="Modo administrador" route="//products-admin"></button-template>
         </li>
       </ul>
     </div>
