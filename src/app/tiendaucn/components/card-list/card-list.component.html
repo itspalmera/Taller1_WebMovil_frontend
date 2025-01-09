@@ -1,4 +1,4 @@
-<div class="card-container">
-  <card-product *ngFor="let product of products" [product]="product"></card-product>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-10">
+  <card-product *ngFor="let product of products" [product]="product" class="flex justify-center relative"></card-product>
 </div>
 

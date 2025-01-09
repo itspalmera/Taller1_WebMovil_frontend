@@ -1,0 +1,88 @@
+
+<form [formGroup]="forms" (ngSubmit)="onSubmit()">
+
+    <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-300">Nombre</label>
+        <input type="text" id="name" formControlName="name"
+            class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 bg-white">
+    </div>
+    <div>
+        <small *ngIf="nameRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El nombre es requerido.
+        </small>
+        <small *ngIf="error"
+                class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+                {{ errorMessage }}
+        </small>
+    </div>
+
+    <div class="mb-4">
+        <label for="price" class="block text-sm font-medium text-gray-300">Precio</label>
+        <input type="number" id="price" formControlName="price"
+            class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 bg-white">
+    </div>
+    <div>
+        <small *ngIf="priceRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El precio es requerido.
+        </small>
+        <small *ngIf="forms.get('price')?.errors?.['pattern']" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El precio tiene que ser un número.
+        </small>
+        <small *ngIf="forms.get('price')?.errors?.['min']" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El precio no puede ser menor a 0.
+        </small>
+      </div>
+    <div class="mb-4">
+        <label for="stock" class="block text-sm font-medium text-gray-300">Stock</label>
+        <input type="number" id="stock" formControlName="stock"
+          class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 bg-white">
+      </div>
+      <div>
+        <small *ngIf="stockRequired" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El stock es requerido.
+        </small>
+        <small *ngIf="forms.get('stock')?.errors?.['pattern']" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El stock tiene que ser un número.
+        </small>
+        <small *ngIf="forms.get('stock')?.errors?.['min']" 
+               class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">
+          El stock no puede ser menor a 0.
+        </small>
+      </div>
+    <div class="mb-4">
+        <label for="image" class="block text-sm font-medium text-gray-300">Imagen</label>
+        <input type="text" id="image" formControlName="image"
+            class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 bg-white">
+    </div>
+
+    <div class="mb-4">
+        <label for="category" class="block text-sm font-medium text-gray-300">Tipo</label>
+        <select id="category" formControlName="categoryId"
+            class="mt-1 block w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 bg-white">
+            <option value="" disabled selected>Seleccionar tipo</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+    </div>
+    <div *ngIf="categoryRequired">
+        <small class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">El tipo es requerido</small>
+    </div>
+    <div *ngIf="forms.get('stock')?.errors?.['min']" >
+        <small class="block bg-yellow-100 text-yellow-800 p-3 rounded-md shadow-sm border-l-4 border-yellow-500">El tipo debe estar entre 1 y 5</small>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit"
+            class="w-full bg-[#db6e59] text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            Enviar
+        </button>
+    </div>
+    <div *ngIf="successMessage" class="mt-2 p-3 bg-green-100 text-green-800 border-l-4 border-green-500 rounded-md">
+        {{ successMessage }}
+    </div>
+</form>

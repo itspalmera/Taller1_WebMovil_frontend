@@ -1,10 +1,18 @@
 export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  stock: number;
-  image: string;
-  enabled: boolean;
-  categoryId: number;
-  category: string;
+  id:      string;
+  name:    string;
+  price:   string;
+  stock:   string;
+  image:   Image;
+  enabled: Enabled;
+  type:    string;
+}
+
+export enum Enabled {
+  Deshabilitado = "Deshabilitado",
+  Habilitado = "Habilitado",
+}
+
+export enum Image {
+  Imagen = "imagen",
 }
